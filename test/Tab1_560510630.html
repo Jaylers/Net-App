@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="embed.css" rel="stylesheet" >
+<meta charset="utf-8">
+<style>
+  body {background-color:lightgrey;}
+  h5   {color:purple;}
+  p    {color:green;}
+</style>
+<style type="text/css">
+
+body,td,th {
+  color: #00F;
+}
+.Head {
+  font-size: 70px;
+}
+.ntext {
+  font-size: 24px;
+  color: #03F;
+}
+</style>
+
+<title>Profile</title>
+</head>
+<style>
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+</style>
+<body>
+<?php  $nickname = 'unknow';  ?>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<div class="container">
+<div class="row">
+          <ul class="nav nav-tabs">
+               <li class="active">
+                <a href="Tab1_560510630.html"> Main </a>
+              </li>
+              <li>
+                <a href="../index.html"> New Review </a>
+              </li>
+              <?php
+               if($nickname != "unknow")
+               { ?>
+               <li>
+               <a href="Tab2_560510630.html"> Sign out </a>
+               </li>
+               <?php } ?>
+               <?php
+               if($nickname == "unknow")
+               { ?>
+               <li>
+               <a href="../index.html"> Sign in </a>
+               </li>
+               <?php } ?>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gtext"> Sapthawee Srichomthong 560510630</span>
+          </ul>
+     </div>
+
+      <pre>
+        <strong><br/><br/>&nbsp;&nbsp;&nbsp;<span class="Head">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My&nbsp;Profile</span></strong><br>
+      <img class="displayed" src="Profile.jpg" align="middle" width="300"/>
+      <span class="displaytext">
+        Name : Sapthawee Srichomthong <br/>
+        Nick Name : Jay <br/>
+        Year : 3 at Computer Science <br/>
+        Student ID : 560510630 <br/>
+        Email : Srichomthong_S@hotmail.co.th<br/>
+        Facebook : <a href="https://www.facebook.com/SapthaweeSCT" target="_new">SapthaweeSCT</a>
+      </span>
+    </pre>
+    <span class ="ntext"> ประวัติการศึกษา</span>
+    <div class="row">
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>ปีการศึกษาที่จบ</th>
+            <th>วุฒิการศึกษา</th>
+            <th>ชื่อสถาบัน</th>
+            <th>จังหวัด</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>2543</td>
+            <td>อนุบาล 2</td>
+            <td><a href="https://www.facebook.com/taleeschool.chomtong" target="_new">โรงเรียนบ้านปากทางท่าลี่</a></td>
+            <td>เชียงใหม่</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>2549</td>
+            <td>ประถมศึกษาปีที่ 6</td>
+            <td><a href="https://www.facebook.com/taleeschool.chomtong" target="_new">โรงเรียนบ้านปากทางท่าลี่</a> </td>
+            <td>เชียงใหม่</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>2555</td>
+            <td>มัธยมศึกษาปีที่ 6</td>
+            <td><a href="http://www.chomthong.ac.th/" target="_new">โรงเรียนจอมทอง</a></td>
+            <td>เชียงใหม่</td>
+        </tr>
+    </tbody>
+</table> 
+<img src="cover.jpg" align="middle"/>
+</body>
+</html>
