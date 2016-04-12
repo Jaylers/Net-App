@@ -23,7 +23,7 @@ body,td,th {
 }
 </style>
 
-<title>Profile</title>
+<title>ReviewMovie</title>
 </head>
 <style>
 .row-eq-height {
@@ -66,7 +66,25 @@ body,td,th {
 			?>
         </ul>
 
-        <img src="test/bg.jpg">
+        <p align="center"><img src="http://bloximages.newyork1.vip.townnews.com/kaleo.org/content/tncms/assets/v3/editorial/a/3e/a3eb3afe-9b0d-11e2-a884-001a4bcf6878/5159f305410a0.image.jpg"><p>
+
+        <br><br>
+        <strong><font size="20" color="blue">Review</font></strong>
+        <br>
+        <hr size="10"> 
+        <?php  
+        $conndb = new PDO('mysql:host=localhost;dbname=moviesreview;charset=utf8','root','');
+		$sth = $conndb->prepare("SELECT * FROM review");
+		$sth->execute();
+		if ($sth !== false) {
+		    while($row = $sth->fetch()) {
+		  		echo "<p align='center'><font size='10'>".$row['reviewname']."</fort></p>
+		  			<p align='center'><img src='".$row['image']."'style='width:500px;height:300px;border:0;''><p>
+		  		";
+		    }
+		}
+		$conndb = null;
+        ?>
 
     </div>
 </div>

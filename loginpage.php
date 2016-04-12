@@ -1,3 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="embed.css" rel="stylesheet" >
+<meta charset="utf-8">
+<style>
+  body {background-color:lightgrey;}
+  h5   {color:purple;}
+  p    {color:green;}
+</style>
+<style type="text/css">
+
+body,td,th {
+  color: #00F;
+}
+.Head {
+  font-size: 70px;
+}
+.ntext {
+  font-size: 24px;
+  color: #03F;
+}
+</style>
+
+<title>Profile</title>
+</head>
+<style>
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+</style>
+<body>
 <script language="javascript">
 	function fncSubmit()//ฟังชั่นตรวจว่ากรอกข้อมูลครบไหม
 	{
@@ -19,11 +55,17 @@
 
 </script>
 
-<form name="form1" id="form1" method="post" action="loginpage.php" onSubmit="JavaScript:return fncSubmit();" >
-	<p>ID <input type="varchar" id="Id" name="Id" size="20"></input></p>
+<div class="container">
+	<div class="row">
+
+<br><br><br><br><br><br><br>
+<p align="center"><strong><font size="50">Log in</font></strong><br></p>
+<br><br>
+<form  align="center" name="form1" id="form1" method="post" action="loginpage.php" onSubmit="JavaScript:return fncSubmit();" >
+	<p>ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="varchar" id="Id" name="Id" size="20"></input></p>
 	<p>Password <input type="varchar" id="Password" name="Password" size="20"></input></p>
 	<p>
-		<input type="submit" name="submit" value="Submit" >
+		<input type="submit" name="submit" value="Login" >
 		<input type="reset" name="reset" value="Reset" >
 		<a href="page1.php">กลับหน้าแรก</a>
 	</p>
@@ -57,3 +99,11 @@
 	}
 ?>
 
+
+        
+
+    </div>
+</div>
+
+</body>
+</html>
