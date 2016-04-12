@@ -87,7 +87,7 @@ body,td,th {
 			session_start();
 			$_SESSION["ID"] = $ID;
 			$_SESSION["Nickname"] = $row["nickname"];
-			header("LOCATION: page1.php");
+			header("LOCATION: reviewblog.php");
 		}
 		else{
 			echo"<script language=\"JavaScript\">";
