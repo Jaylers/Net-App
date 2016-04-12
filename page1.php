@@ -1,11 +1,11 @@
 <?php  
 	session_start();
-	/*if(!empty($_POST['logout'])){
+	if(!empty($_POST['logout'])){
 		echo"<script language=\"JavaScript\">";
 		echo"alert('Log out')";
 		echo"</script>";
 		session_unset(); 
-	}*/
+	}
 	if(!empty($_SESSION["ID"])){
 		echo "Welcome : ".$_SESSION["Nickname"];
 		echo "<form align='right' name='form1' id='form1' method='post' action='page1.php' >
