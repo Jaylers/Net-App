@@ -80,16 +80,14 @@ body,td,th {
 		$sth->execute();
 		if ($sth !== false) {
 		    while($row = $sth->fetch()) {
-		    	?> <ol class="breadcrumb"><br> <?php
-  				
-		  		echo "<p align='center'><font size='6'>เรื่อง : ".$row['reviewname']."</fort></p>
-<<<<<<< HEAD
-		  			<p align='center'><img src='".$row['image']."'style='width:400;height:250px;border:0;''><p>";
-
-=======
-		  			<p align='center'><img src='".$row['image']."'style='width:400;height:250px;border:0;'><p>";
->>>>>>> origin/master
-		    	?>  </a></li>
+		    	?> <ol class="breadcrumb"><br>
+		    	<?php $reid = $row['reviewid']; ?>
+		    	<?php
+		  		echo "<p align='left'><font size='2'>".$row['datetime']."</fort></p>
+		  			<p align='center'><font size='6'>เรื่อง : ".$row['reviewname']."</fort></p>
+		  			<p align='center'><img src='".$row['image']."'style='width:400;height:250px;border:0;''><p> " ;?>
+		    		<a href="reviewblog.php?reid=<?=$reid;?>"> <p align='right'><font size='4'> read </fort></p> </a>
+            	</li>
 		  		<?php echo "</ol>";
 		    }
 		}
@@ -97,7 +95,7 @@ body,td,th {
         ?>
     </div>
 </div>
-<img src="cover.jpg" align="middle"/>
+<p align="center"><img src="image/cover.jpg"/></p>
 </body>
 </html>
 
