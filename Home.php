@@ -80,20 +80,20 @@ body,td,th {
 		$sth->execute();
 		if ($sth !== false) {
 		    while($row = $sth->fetch()) {
-		    	?> <ol class="breadcrumb"><br>
-  				<li><a href="reviewblog.php?reid=<?php $row['reviewid'] ?>"> <?php
+		    	?> <ol class="breadcrumb"><br> <?php
+  				
 		  		echo "<p align='center'><font size='6'>เรื่อง : ".$row['reviewname']."</fort></p>
 		  			<p align='center'><img src='".$row['image']."'style='width:400;height:250px;border:0;''><p>";
+
 		    	?>  </a></li>
 		  		<?php echo "</ol>";
 		    }
 		}
 		$conndb = null;
         ?>
-
     </div>
 </div>
-
+<img src="cover.jpg" align="middle"/>
 </body>
 </html>
 

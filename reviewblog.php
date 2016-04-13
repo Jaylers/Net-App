@@ -1,5 +1,6 @@
 <?php  
 	session_start();
+	$review = $_GET['reid'];
 	if(!empty($_POST['logout'])){
 		echo"<script language=\"JavaScript\">";
 		echo"alert('Log out')";
@@ -85,21 +86,55 @@ body,td,th {
      </div>
      <span class="gtext"> Welcome : <?php echo $username ?> </span>
     <pre>
+    	<?php  
+        $conndb = new PDO('mysql:host=localhost;dbname=moviesreview;charset=utf8','root','');
+		$sth = $conndb->prepare("SELECT * FROM review where reviewid = <?php $review ?>");
+		$sth->execute();
+		if ($sth !== false) {
+		    while($row = $sth->fetch()) {
+		    	?> <ol class="breadcrumb"><br>
+  				<li>
+  				<?php
+		  		echo "<p align='left'><font size='3'>เรื่อง : ".$row['reviewname']."</fort> <font size='3'>คะแนน : ".$row['rate']."</fort> </p>
+		  			<p align='left'><font size='4'>".$row['detail']."</fort></p>
+		  			<p align='center'><img src='".$row['image']."'style='width:400;height:250px;border:0;''><p>
+		  			<p align='left'><font size='2'>".$row['datetime']."</fort> <font size='2' color='blue'>".$row['owner']."</fort>  </p>";
+		  			?>
+		  		</li>
+		  		<?php echo "</ol>";
+		    }
+		}
+		$conndb = null;
+        ?>
         <strong><br/><br/><span class="Head"> Name of movie </span></strong><br>
       <img class="displayed" src="image/Profile.jpg" align="center" width="300"/>
       <span class="displaytext">
         detail
       </span>
     </pre>
-    <pre>
-        <strong><br/><br/><span class="Head"> Name of movie </span></strong><br>
-      <img class="displayed" src="image/Profile.jpg" align="center" width="30"/>
-      <span class="displaytext">
-        detail
-      </span>
-    </pre>
+
+        <?php  
+        $conndb = new PDO('mysql:host=localhost;dbname=moviesreview;charset=utf8','root','');
+		$sth = $conndb->prepare("SELECT * FROM comment");
+		$sth->execute();
+		if ($sth !== false) {
+		    while($row = $sth->fetch()) {
+		    	?> <ol class="breadcrumb"><br>
+  				<li>
+  				<?php
+		  		echo "<p align='left'><font size='3'>เรื่อง : ".$row['commentof']."</fort></p>
+		  			<p align='left'><font size='4'>".$row['detail']."</fort></p>
+		  			<p align='left'><font size='2'>".$row['datetime']."</fort> <font size='2' color='blue'>".$row['owner']."</fort>  </p>";
+		  			?>
+		  		</li>
+		  		<?php echo "</ol>";
+		    }
+		}
+		$conndb = null;
+        ?>
+
     <div class="row">
-<img src="image/cover.jpg" align="middle"/>
+<p align="center"><img src="image/cover.jpg"/></p>
 </body>
 </html>
 
