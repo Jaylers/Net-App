@@ -58,7 +58,7 @@ body,td,th {
 							<input type='hidden' name='logout' value='logout' >
 							<input type='submit' name='logout' value='Logout' >
 						</form></a></li>";
-					echo "<li style='float: right;'><a href='#'><input align='right' type='submit' name='creat' value='สร้างบล็อก' ></a></li>";
+					echo "<li style='float: right;'><a href='createblog.php'><input align='right' type='submit' name='creat' value='สร้างบล็อก' ></a></li>";
 				}
 				else {
 					echo "<li style='float: right;'><a href='#'> Register </a></li>";
