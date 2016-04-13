@@ -68,7 +68,7 @@ body,td,th {
         </ul>
         <span class="gtext"> Welcome : <?php echo $username ?> </span>
 
-        <p align="center"><img src="http://bloximages.newyork1.vip.townnews.com/kaleo.org/content/tncms/assets/v3/editorial/a/3e/a3eb3afe-9b0d-11e2-a884-001a4bcf6878/5159f305410a0.image.jpg"><p>
+        <p align="center"><img src="http://bloximages.newyork1.vip.townnews.com/kaleo.org/content/tncms/assets/v3/editorial/a/3e/a3eb3afe-9b0d-11e2-a884-001a4bcf6878/5159f305410a0.image.jpg" style='width:1300px;height:300px;border:0;'><p>
 
         <br><br>
         <strong><font size="20" color="blue">Review</font></strong>
@@ -83,7 +83,7 @@ body,td,th {
 		    	?> <ol class="breadcrumb"><br>
   				<li><a href="reviewblog.php?reid=<?php $row['reviewid'] ?>"> <?php
 		  		echo "<p align='center'><font size='6'>เรื่อง : ".$row['reviewname']."</fort></p>
-		  			<p align='center'><img src='".$row['image']."'style='width:400;height:250px;border:0;''><p>";
+		  			<p align='center'><img src='".$row['image']."'style='width:400;height:250px;border:0;'><p>";
 		    	?>  </a></li>
 		  		<?php echo "</ol>";
 		    }
