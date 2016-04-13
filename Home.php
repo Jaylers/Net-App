@@ -52,13 +52,13 @@ body,td,th {
 					session_unset(); 
 				}
 				if(!empty($_SESSION["ID"])){
-					$username = $_SESSION["Nickname"];
-					
+					$username = $_SESSION["Nickname"];					
 					echo "<li style='float: right;'> <a> <form  name='form1' id='form1' method='post' action='Home.php' >
 							<input type='hidden' name='logout' value='logout' >
 							<input type='submit' name='logout' value='Logout' >
 						</form></a></li>";
 					echo "<li style='float: right;'><a href='createblog.php'><input align='right' type='submit' name='creat' value='สร้างบล็อก' ></a></li>";
+
 				}
 				else {
 					echo "<li style='float: right;'><a href='#'> Register </a></li>";
@@ -66,7 +66,11 @@ body,td,th {
 				}
 			?>
         </ul>
-        <span class="gtext"> Welcome : <?php echo $username ?> </span>
+        <?php  
+	        if(!empty($_SESSION["ID"])){
+	        echo "<span class='gtext'> Welcome : $username </span>";
+	        }
+        ?>
 
         <p align="center"><img src="http://bloximages.newyork1.vip.townnews.com/kaleo.org/content/tncms/assets/v3/editorial/a/3e/a3eb3afe-9b0d-11e2-a884-001a4bcf6878/5159f305410a0.image.jpg" style='width:1300px;height:300px;border:0;'><p>
 

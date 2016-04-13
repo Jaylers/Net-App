@@ -81,7 +81,11 @@ body,td,th {
               <?php } ?>
           </ul>
 </div>
-     <span class="gtext"> Welcome : <?php echo $username ?> </span>
+    <?php  
+      if(!empty($_SESSION["ID"])){
+        echo "<span class='gtext'> Welcome : $username </span>";
+      }
+    ?>
     <ol class="breadcrumb"><br>
   	<li>
     	<?php  
