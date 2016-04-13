@@ -60,14 +60,14 @@ body,td,th {
 
 <br><br><br><br><br><br><br>
 <p align="center"><strong><font size="50">Log in</font></strong><br></p>
-<br><br>
+<br>
 <form  align="center" name="form1" id="form1" method="post" action="loginpage.php" onSubmit="JavaScript:return fncSubmit();" >
-	<p>ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="varchar" id="Id" name="Id" size="20"></input></p>
+	<p>Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="varchar" id="Id" name="Id" size="20"></input></p>
 	<p>Password <input type="varchar" id="Password" name="Password" size="20"></input></p>
 	<p>
 		<input type="submit" name="submit" value="Login" >
 		<input type="reset" name="reset" value="Reset" >
-		<a href="page1.php">กลับหน้าแรก</a>
+		<a href="Home.php">กลับหน้าแรก</a>
 	</p>
 </form>
 
@@ -87,7 +87,7 @@ body,td,th {
 			session_start();
 			$_SESSION["ID"] = $ID;
 			$_SESSION["Nickname"] = $row["nickname"];
-			header("LOCATION: reviewblog.php");
+			header("LOCATION: Home.php");
 		}
 		else{
 			echo"<script language=\"JavaScript\">";

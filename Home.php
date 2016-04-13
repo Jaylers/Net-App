@@ -40,10 +40,11 @@ body,td,th {
 		<!--ส่วนบาร์-->
         <ul class="nav nav-tabs">
             <li class="active">
-                <a href="page1.php"> Main </a>
+                <a href="Home.php"> Main </a>
             </li>
 			<?php  
 				session_start();
+				$username = "unknow";
 				if(!empty($_POST['logout'])){
 					echo"<script language=\"JavaScript\">";
 					echo"alert('Log out')";
@@ -51,20 +52,21 @@ body,td,th {
 					session_unset(); 
 				}
 				if(!empty($_SESSION["ID"])){
-					echo "<li style='float: right;'>Welcome : ".$_SESSION["Nickname"]."</li>";
+					$username = $_SESSION["Nickname"];
 					
-					echo "<li style='float: right;'><a><form  name='form1' id='form1' method='post' action='page1.php' >
+					echo "<li style='float: right;'> <a> <form  name='form1' id='form1' method='post' action='Home.php' >
 							<input type='hidden' name='logout' value='logout' >
 							<input type='submit' name='logout' value='Logout' >
 						</form></a></li>";
 					echo "<li style='float: right;'><a href='#'><input align='right' type='submit' name='creat' value='สร้างบล็อก' ></a></li>";
 				}
 				else {
-					echo "<li style='float: right;'><a href='#'>สมัครสมาชิก</a></li>";
+					echo "<li style='float: right;'><a href='#'> Register </a></li>";
 					echo "<li style='float: right;'><a href='loginpage.php'>Login</a></li>";
 				}
 			?>
         </ul>
+        <span class="gtext"> Welcome : <?php echo $username ?> </span>
 
         <p align="center"><img src="http://bloximages.newyork1.vip.townnews.com/kaleo.org/content/tncms/assets/v3/editorial/a/3e/a3eb3afe-9b0d-11e2-a884-001a4bcf6878/5159f305410a0.image.jpg"><p>
 
@@ -78,9 +80,12 @@ body,td,th {
 		$sth->execute();
 		if ($sth !== false) {
 		    while($row = $sth->fetch()) {
-		  		echo "<p align='center'><font size='10'>".$row['reviewname']."</fort></p>
-		  			<p align='center'><img src='".$row['image']."'style='width:500px;height:300px;border:0;''><p>
-		  		";
+		    	?> <ol class="breadcrumb"><br>
+  				<li><a href="reviewblog.php?reid=<?php $row['reviewid'] ?>"> <?php
+		  		echo "<p align='center'><font size='6'>เรื่อง : ".$row['reviewname']."</fort></p>
+		  			<p align='center'><img src='".$row['image']."'style='width:400;height:250px;border:0;''><p>";
+		    	?>  </a></li>
+		  		<?php echo "</ol>";
 		    }
 		}
 		$conndb = null;

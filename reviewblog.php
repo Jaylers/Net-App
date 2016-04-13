@@ -56,7 +56,7 @@ body,td,th {
 <div class="row">
           <ul class="nav nav-tabs">
             <li>
-            <a href="#"> Main </a>
+            <a href="Home.php"> Main </a>
             </li>
             <li class="active">
             	<a href="#"> Review </a>
@@ -65,9 +65,9 @@ body,td,th {
             if( $username != "unknow")
             { ?>
               <li style='float: right;'>
-              	<form align='right' name='form1' id='form1' method='post' action='reviewpage.php' >
+              	<form align='right' name='form1' id='form1' method='post' action='Home.php' >
 				<input type='hidden' name='logout' value='logout'>
-				<input type='submit' name='logout' value='Sign out' >
+				<input type='submit' name='logout' value='Log out' >
 				</form>
               </li>
               <?php } ?>
