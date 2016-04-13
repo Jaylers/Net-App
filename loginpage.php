@@ -87,6 +87,7 @@ body,td,th {
 			session_start();
 			$_SESSION["ID"] = $ID;
 			$_SESSION["Nickname"] = $row["nickname"];
+			$_SESSION["memberid"] = $row["memberid"];
 			header("LOCATION: Home.php");
 		}
 		else{
