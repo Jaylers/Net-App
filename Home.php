@@ -82,11 +82,12 @@ body,td,th {
 		    while($row = $sth->fetch()) {
 		    	?> <ol class="breadcrumb"><br>
 		    	<?php $reid = $row['reviewid']; ?>
+		    	<a href="reviewblog.php?reid=<?=$reid;?>">
 		    	<?php
 		  		echo "<p align='left'><font size='2'>".$row['datetime']."</fort></p>
 		  			<p align='center'><font size='6'>เรื่อง : ".$row['reviewname']."</fort></p>
 		  			<p align='center'><img src='".$row['image']."'style='width:400;height:250px;border:0;''><p> " ;?>
-		    		<a href="reviewblog.php?reid=<?=$reid;?>"> <p align='right'><font size='4'> read </fort></p> </a>
+		    		</a>
             	</li>
 		  		<?php echo "</ol>";
 		    }
