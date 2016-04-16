@@ -21,7 +21,7 @@
 	    $owner = $_POST['username'];
 	    $rid= $_POST['rid'];
        	$commentof = "unknow";
-        $conndb = @include 'dbconnect.php';
+        $conndb = new PDO('mysql:host=localhost;dbname=moviesreview;charset=utf8','root','');
 		$sth = $conndb->prepare("SELECT reviewname FROM review WHERE reviewid = '$rid' ");
 		$sth->execute();
 		if ($sth != false) {
@@ -52,7 +52,9 @@
         if($conn->connect_error){
         	die("Connection failed: ".$conn->connect_error);
         }
-        $sql = "INSERT INTO comment(commentid, detail, agree, datetime, owner, commentof) VALUES ('$maxcomm','$detail','$agree','CURRENT_TIMESTAMP','$owner','$commentof')";
+        mysqli_set_charset($conn, "utf8");
+        $time = date('Y-m-d H:i:s');
+        $sql = "INSERT INTO comment(commentid, detail, agree, datetime, owner, commentof) VALUES ('$maxcomm','$detail','$agree','$time','$owner','$commentof')";
 
         $conn->query($sql);
         $conn->close();
@@ -65,6 +67,7 @@
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="bootstrap/css/embed.css" rel="stylesheet" >
 <meta charset="utf-8">
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 <style>
   body {background-color:lightgrey;}
   h5   {color:purple;}
@@ -138,7 +141,7 @@ body,td,th {
 
     	<?php
     	$rname = "unknow";
-		$conndb = @include 'dbconnect.php';
+		$conndb = new PDO('mysql:host=localhost;dbname=moviesreview;charset=utf8','root','');
 		$sth = $conndb->prepare("SELECT nickname FROM member WHERE memberid in (SELECT owner FROM review WHERE reviewid = '$rid') ");
 		$sth->execute();
 		if ($sth !== false) {
@@ -148,7 +151,7 @@ body,td,th {
 		}
 		$conndb = null;
 
-        $conndb = @include 'dbconnect.php';
+        $conndb = new PDO('mysql:host=localhost;dbname=moviesreview;charset=utf8','root','');
 		$sth = $conndb->prepare("SELECT * FROM review where reviewid = '$rid' ");
 		$sth->execute();
 		if ($sth !== false) {
@@ -165,7 +168,7 @@ body,td,th {
 		  			?>
 		  		</li>
 		<?php  
-        $conndb = @include 'dbconnect.php';
+        $conndb = new PDO('mysql:host=localhost;dbname=moviesreview;charset=utf8','root','');
 		$sth = $conndb->prepare("SELECT agree FROM COMMENT WHERE commentof in (SELECT reviewname FROM review WHERE reviewid = '$rid')");
 		$numofagree = 0;
 		$numofdisagree = 0;
