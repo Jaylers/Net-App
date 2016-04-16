@@ -68,7 +68,7 @@ body,td,th {
 	<div class="control-group">
 		<div class="controls">
 		<input type="submit" class="btn btn-success" name="submit" value="Sign in" >
-		<input type="reset" class="btn btn-danger" name="reset" value="Reset" >
+		<input type="button" class="btn btn-success" name="reg" value="Register" ONCLICK="window.location.href='regis.php'" >
 		<a href="Home.php"> กลับหน้าแรก </a>
 		</div>
 	</div>

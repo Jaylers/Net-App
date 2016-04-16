@@ -238,9 +238,7 @@ body,td,th {
 	</div>
 	</form>
 </li>
-<?php } 
-
-echo "<div  align='left'><font size='3' color='#6C7A89'> You don't have permission to comment need <a href='loginpage.php'> Sign in </a>       </font></div>"; ?>
+<?php }else{ echo "<div  align='left'><font size='3' color='#6C7A89'> You don't have permission to comment need <a href='loginpage.php'> Sign in </a>       </font></div>";} ?>
 
 <p align="center"><img src="image/cover.jpg"/></p>
 </body>

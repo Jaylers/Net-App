@@ -120,6 +120,7 @@
       <div class="controls">
         <input type="submit" class="btn btn-success" id="submitbottom" value="สมัครใช้งาน">
         <button type="reset" class="btn btn-danger" name="Reset" id="button" value="reset" onclick="resets()"/>ล้างค่า</button>
+		<input type="button" class="btn btn-success" name="home" value="Home" ONCLICK="window.location.href='Home.php'" >
       </div>
     </div>
   </form>
