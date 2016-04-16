@@ -21,7 +21,7 @@
 	    $owner = $_POST['username'];
 	    $rid= $_POST['rid'];
        	$commentof = "unknow";
-        $conndb = new PDO('mysql:host=localhost;dbname=moviesreview;charset=utf8','root','');
+        $conndb = @include 'dbconnect.php';
 		$sth = $conndb->prepare("SELECT reviewname FROM review WHERE reviewid = '$rid' ");
 		$sth->execute();
 		if ($sth != false) {
@@ -138,7 +138,7 @@ body,td,th {
 
     	<?php
     	$rname = "unknow";
-		$conndb = new PDO('mysql:host=localhost;dbname=moviesreview;charset=utf8','root','');
+		$conndb = @include 'dbconnect.php';
 		$sth = $conndb->prepare("SELECT nickname FROM member WHERE memberid in (SELECT owner FROM review WHERE reviewid = '$rid') ");
 		$sth->execute();
 		if ($sth !== false) {
@@ -148,7 +148,7 @@ body,td,th {
 		}
 		$conndb = null;
 
-        $conndb = new PDO('mysql:host=localhost;dbname=moviesreview;charset=utf8','root','');
+        $conndb = @include 'dbconnect.php';
 		$sth = $conndb->prepare("SELECT * FROM review where reviewid = '$rid' ");
 		$sth->execute();
 		if ($sth !== false) {
@@ -165,7 +165,7 @@ body,td,th {
 		  			?>
 		  		</li>
 		<?php  
-        $conndb = new PDO('mysql:host=localhost;dbname=moviesreview;charset=utf8','root','');
+        $conndb = @include 'dbconnect.php';
 		$sth = $conndb->prepare("SELECT agree FROM COMMENT WHERE commentof in (SELECT reviewname FROM review WHERE reviewid = '$rid')");
 		$numofagree = 0;
 		$numofdisagree = 0;
