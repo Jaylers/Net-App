@@ -64,6 +64,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+  <link href="my.css" rel="stylesheet">
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="bootstrap/css/embed.css" rel="stylesheet" >
 <meta charset="utf-8">
@@ -200,6 +204,7 @@ body,td,th {
 		    	?> <ol class="breadcrumb"><br>
   				<pre>
   				<?php
+  				$member = $row['owner'];
 		  		echo "<span class='displaytext'>
 		  			<div  align='left'><font size='3' color='#6C7A89' >"."    ".$row['detail']."</fort></div>
 		  			<font size='2'>".$row['datetime']."</fort> <font size='2' color='blue'>".$row['owner']."</fort> </span>";
@@ -215,19 +220,27 @@ body,td,th {
 
 <ol class="breadcrumb"><br>
 <li>
-<?php
-	echo "<form method='post' action='reviewblog.php'>
-		<p> Comment <br/><textarea name='detail' id='detail' cols='40' rows='3'></textarea><br/>
-  		<input type='radio' name='agree' id='agree1' value='1' checked/> Agree 
-  		<input type='radio' name='agree' id='agree2' value='0'> Disagree
+	<form class="form-horizontal" method='post' action='reviewblog.php'>
+	<div class="control-group">
+		<div class="controls">
+			<?php echo"Comment as ".$username ?> <br/>
+			<textarea name='detail' id='detail' rows='3' placeholder="Comment" required></textarea><br/><br/>
+  			<input type='radio' name='agree' id='agree1' value='1' checked/> Agree 
+  			<input type='radio' name='agree' id='agree2' value='0'> Disagree
 
-		<input type='hidden' name='rid' value='$rid' />
-		<input type='hidden' name='username' value='$username' /><br/><br/>
-		<input type='submit' name='mysubmit' id='mysubmit' value='Submit'/> </p>
-	</form>"
-?>
+			<input type='hidden' name='rid' value='$rid' />
+			<input type='hidden' name='username' value='$username' /><br/><br/>
+		</div>
+		<div class="controls">
+        	<input type="submit" class="btn btn-success" id="submitbottom" value="Comment">
+        	<button type="reset" class="btn btn-danger" name="Reset" id="button" value="reset" onclick="resets()"/>Reset</button>
+      	</div>
+	</div>
+	</form>
 </li>
-<?php } ?>
+<?php } 
+
+echo "<div  align='left'><font size='3' color='#6C7A89'> You don't have permission to comment need <a href='loginpage.php'> Sign in </a>       </font></div>"; ?>
 
 <p align="center"><img src="image/cover.jpg"/></p>
 </body>
