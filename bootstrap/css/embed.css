@@ -1,0 +1,21 @@
+.gtext {
+	color: darkviolet;
+	text-align:left;
+}
+p {
+    padding: 10px;
+	margin: 20px0px;
+	color: purple;
+}
+IMG.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto ;
+}
+.displaytext {
+	align:left;
+	color: black;
+    display: block;
+    margin-left: 5%;
+    margin-right: 5% ;
+}
