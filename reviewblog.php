@@ -160,7 +160,7 @@ body,td,th {
   				<li>
   				<?php
 		  		echo "<p align='center'><img src='".$row['image']."'style='width:500;height:300px;border:0;''><p>
-		  		<p align='left'><font size='6'>เรื่อง : ".$row['reviewname']."</fort> <font size='3'> review poit : ".$row['rate'].
+		  		<p align='left'><font size='6'>เรื่อง : ".$row['reviewname']."</fort> <font size='3' color='#3D3677'> Review point : ".$row['rate']."/10".
 		  		"</fort> </p>
 		  			<p align='left'><font size='4'>".$row['detail']."</fort></p>
 		  			<p align='left'><font size='2'>".$row['datetime']."</fort> <font size='2' color='blue'>".$ownername.
