@@ -47,7 +47,7 @@ body,td,th {
 				$username = "unknow";
 				if(!empty($_POST['logout'])){
 					echo"<script language=\"JavaScript\">";
-					echo"alert('Log out')";
+					echo"alert('Signed out Successfully')";
 					echo"</script>";
 					session_unset(); 
 				}
@@ -55,14 +55,14 @@ body,td,th {
 					$username = $_SESSION["Nickname"];					
 					echo "<li style='float: right;'> <a> <form  name='form1' id='form1' method='post' action='Home.php' >
 							<input type='hidden' name='logout' value='logout' >
-							<input type='submit' name='logout' value='Logout' >
+							<input type='submit' name='logout' value='Sign out' >
 						</form></a></li>";
-					echo "<li style='float: right;'><a href='createblog.php'><input align='right' type='submit' name='creat' value='สร้างบล็อก' ></a></li>";
+					echo "<li style='float: right;'><a href='createblog.php'><input align='right' type='submit' name='creat' value='New blog' ></a></li>";
 
 				}
 				else {
-					echo "<li style='float: right;'><a href='#'> Register </a></li>";
-					echo "<li style='float: right;'><a href='loginpage.php'>Login</a></li>";
+					echo "<li style='float: right;'><a href='loginpage.php'>Sign in</a></li>";
+					echo "<li style='float: right;'><a href='regis.php'> Register </a></li>";
 				}
 			?>
         </ul>
