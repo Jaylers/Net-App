@@ -23,7 +23,7 @@ body,td,th {
 }
 </style>
 
-<title>ReviewMovie</title>
+<title>New Review Blog</title>
 </head>
 <style>
 .row-eq-height {

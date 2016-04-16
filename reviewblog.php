@@ -87,7 +87,7 @@ body,td,th {
 }
 </style>
 
-<title>Profile</title>
+<title>Review</title>
 </head>
 <style>
 .row-eq-height {
@@ -201,7 +201,7 @@ body,td,th {
   				<pre>
   				<?php
 		  		echo "<span class='displaytext'>
-		  			<font size='3'>".$row['detail']."</fort>
+		  			<div  align='left'><font size='3' color='#6C7A89' >"."    ".$row['detail']."</fort></div>
 		  			<font size='2'>".$row['datetime']."</fort> <font size='2' color='blue'>".$row['owner']."</fort> </span>";
 		  			?>
 		  		</pre>

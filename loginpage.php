@@ -23,7 +23,7 @@ body,td,th {
 }
 </style>
 
-<title>Profile</title>
+<title>Log in</title>
 </head>
 <style>
 .row-eq-height {

@@ -13,7 +13,7 @@ IMG.displayed {
     margin-right: auto ;
 }
 .displaytext {
-	align:left;
+	text-align:left;
 	color: black;
     display: block;
     margin-left: 5%;
