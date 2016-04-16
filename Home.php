@@ -85,8 +85,8 @@ body,td,th {
 		if ($sth !== false) {
 		    while($row = $sth->fetch()) {
 		    	?> <ol class="breadcrumb"><br>
-		    	<?php $reid = $row['reviewid']; ?>
-		    	<a href="reviewblog.php?reid=<?=$reid;?>">
+		    	<?php $rid = $row['reviewid']; ?>
+		    	<a href="reviewblog.php?rid=<?=$rid;?>">
 		    	<?php
 		  		echo "<p align='left'><font size='2'>".$row['datetime']."</fort></p>
 		  			<p align='center'><font size='6'>เรื่อง : ".$row['reviewname']."</fort></p>

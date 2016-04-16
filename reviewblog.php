@@ -1,7 +1,8 @@
 <?php 
-	if(!empty($_GET['reid'])){
-		$rid = $_GET['reid'];
+	if(!empty($_GET['rid'])){
+		$rid = $_GET['rid'];
 	}
+
 	session_start();
 	if(!empty($_SESSION["ID"])){
 		$username=$_SESSION["Nickname"];
@@ -9,38 +10,49 @@
 	else {
 		$username="unknow";
 	}
-
-    if(isset($_POST['detail']) and isset($_POST['agree']) and isset($_POST['rid']))
+?>
+<?php
+    if(isset($_POST['detail']) and isset($_POST['agree']) and isset($_POST['rid']) and isset($_POST['username']))
     {
+    	if($_POST['agree']!=1){
+	    	$agree= 0;
+	    }else $agree= 1;
+	    $detail= $_POST['detail'];
+	    $owner = $_POST['username'];
+	    $rid= $_POST['rid'];
        	$commentof = "unknow";
-       	$rid= $_POST['rid'];
         $conndb = new PDO('mysql:host=localhost;dbname=moviesreview;charset=utf8','root','');
-		$sth = $conndb->prepare("SELECT reviewname FROM review WHERE reviewid = '$rid ");
+		$sth = $conndb->prepare("SELECT reviewname FROM review WHERE reviewid = '$rid' ");
 		$sth->execute();
-		if ($sth !== false) {
+		if ($sth != false) {
 		    while($row = $sth->fetch()) {
 		    	$commentof = $row['reviewname'];
 		    }
 		}
 		$conndb = null;
 
-
-	    if($_POST['agree']!=1){
-	    	$agree= 0;
-	    }else $agree= 1;
-	    $detail= $_POST['detail'];
-	    $owner= $username;
+		$maxcomm = 0;
+		$conndb = new PDO('mysql:host=localhost;dbname=moviesreview;charset=utf8','root','');
+		$sth = $conndb->prepare("select MAX(commentid) FROM comment");
+		$sth->execute();
+		if ($sth !== false) {
+		    while($row = $sth->fetch()) {
+		    	$maxcomm = $row['MAX(commentid)'];
+		    }
+		}
+		$conndb = null;
+		$maxcomm = $maxcomm+1;
 
         $servername ="localhost";
-        $username ="root";
+        $user ="root";
         $password ="";
         $dbname ="moviesreview";
-        $conn = new mysqli($servername,$username,$password,$dbname);
+        $conn = new mysqli($servername,$user,$password,$dbname);
 
         if($conn->connect_error){
         	die("Connection failed: ".$conn->connect_error);
         }
-        $sql = "INSERT INTO Customer(detail,agree,owner,commentof) VALUES ('$detail','$agree','$owner','$commentof')";
+        $sql = "INSERT INTO comment(commentid, detail, agree, datetime, owner, commentof) VALUES ('$maxcomm','$detail','$agree','CURRENT_TIMESTAMP','$owner','$commentof')";
 
         $conn->query($sql);
         $conn->close();
@@ -125,9 +137,19 @@ body,td,th {
   	<li>
 
     	<?php
+    	$rname = "unknow";
+		$conndb = new PDO('mysql:host=localhost;dbname=moviesreview;charset=utf8','root','');
+		$sth = $conndb->prepare("SELECT nickname FROM member WHERE memberid in (SELECT owner FROM review WHERE reviewid = '$rid') ");
+		$sth->execute();
+		if ($sth !== false) {
+		    while($row = $sth->fetch()) {
+		    	$ownername = $row['nickname'];
+		    }
+		}
+		$conndb = null;
 
         $conndb = new PDO('mysql:host=localhost;dbname=moviesreview;charset=utf8','root','');
-		$sth = $conndb->prepare("SELECT * FROM review where reviewid = $rid ");
+		$sth = $conndb->prepare("SELECT * FROM review where reviewid = '$rid' ");
 		$sth->execute();
 		if ($sth !== false) {
 		    while($row = $sth->fetch()) {
@@ -138,13 +160,13 @@ body,td,th {
 		  		<p align='left'><font size='6'>เรื่อง : ".$row['reviewname']."</fort> <font size='3'> review poit : ".$row['rate'].
 		  		"</fort> </p>
 		  			<p align='left'><font size='4'>".$row['detail']."</fort></p>
-		  			<p align='left'><font size='2'>".$row['datetime']."</fort> <font size='2' color='blue'>".$row['owner'].
+		  			<p align='left'><font size='2'>".$row['datetime']."</fort> <font size='2' color='blue'>".$ownername.
 		  			"</fort>  </p>";
 		  			?>
 		  		</li>
 		<?php  
         $conndb = new PDO('mysql:host=localhost;dbname=moviesreview;charset=utf8','root','');
-		$sth = $conndb->prepare("SELECT agree FROM COMMENT");
+		$sth = $conndb->prepare("SELECT agree FROM COMMENT WHERE commentof in (SELECT reviewname FROM review WHERE reviewid = '$rid')");
 		$numofagree = 0;
 		$numofdisagree = 0;
 		$sth->execute();
@@ -156,7 +178,8 @@ body,td,th {
 		    }
 		}
 		$conndb = null;
-		echo $numofagree." Person agree and ".$numofdisagree." Person disagree";
+
+		echo $numofagree." Person agree,  ".$numofdisagree." Person disagree";
         ?>
 		<?php echo "</ol>";
 		    }
@@ -164,9 +187,10 @@ body,td,th {
 		$conndb = null; ?>
     </li>
 
-        <?php  
+        <?php
+
         $conndb = new PDO('mysql:host=localhost;dbname=moviesreview;charset=utf8','root','');
-		$sth = $conndb->prepare("SELECT * FROM comment");
+		$sth = $conndb->prepare("SELECT * FROM comment WHERE commentof in (SELECT reviewname FROM review WHERE reviewid = '$rid')");
 		$sth->execute();
 		if ($sth !== false) {
 		    while($row = $sth->fetch()) {
@@ -175,8 +199,7 @@ body,td,th {
   				<?php
 		  		echo "<span class='displaytext'>
 		  			<font size='3'>".$row['detail']."</fort>
-		  			<font size='2'>".$row['datetime']."
-		  			</fort> <font size='2' color='blue'>".$row['owner']."</fort> </span>";
+		  			<font size='2'>".$row['datetime']."</fort> <font size='2' color='blue'>".$row['owner']."</fort> </span>";
 		  			?>
 		  		</pre>
 		  		<?php echo "</ol>";
@@ -189,13 +212,17 @@ body,td,th {
 
 <ol class="breadcrumb"><br>
 <li>
-	<form method="post" action="reviewblog.php">
-		<p> Comment <br/><textarea name="detail" id="detail" cols="40" rows="3"></textarea>
-		<br/><input type="checkbox" name="agree" value="1" /> Agree
-		<?php $rid; ?>
-		<br/><br/><input type="submit" name="mysubmit" id="mysubmit" value="Submit"/> </p> 
+<?php
+	echo "<form method='post' action='reviewblog.php'>
+		<p> Comment <br/><textarea name='detail' id='detail' cols='40' rows='3'></textarea><br/>
+  		<input type='radio' name='agree' id='agree1' value='1' checked/> Agree 
+  		<input type='radio' name='agree' id='agree2' value='0'> Disagree
 
-	</form>
+		<input type='hidden' name='rid' value='$rid' />
+		<input type='hidden' name='username' value='$username' /><br/><br/>
+		<input type='submit' name='mysubmit' id='mysubmit' value='Submit'/> </p>
+	</form>"
+?>
 </li>
 <?php } ?>
 
