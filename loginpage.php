@@ -58,17 +58,21 @@ body,td,th {
 <div class="container">
 	<div class="row">
 
-<br><br><br><br><br><br><br>
-<p align="center"><strong><font size="50">Log in</font></strong><br></p>
-<br>
+<br><br><br><br><br><br><br><br>
 <form  align="center" name="form1" id="form1" method="post" action="loginpage.php" onSubmit="JavaScript:return fncSubmit();" >
-	<p>Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="varchar" id="Id" name="Id" size="20"></input></p>
-	<p>Password <input type="varchar" id="Password" name="Password" size="20"></input></p>
-	<p>
-		<input type="submit" name="submit" value="Login" >
-		<input type="reset" name="reset" value="Reset" >
-		<a href="Home.php">กลับหน้าแรก</a>
-	</p>
+<ol class="breadcrumb"><br>
+  	<li>
+	<div align="center"><strong><font size="50" color="#0000FF" >Sign in</font></strong><br></div> <br/>
+	<input type="text" id="Id" name="Id" size="20" placeholder="Email" required></input><br/>
+	<input type="password" id="Password" name="Password" size="20" placeholder="Password" required></input>
+	<div class="control-group">
+		<div class="controls">
+		<input type="submit" class="btn btn-success" name="submit" value="Sign in" >
+		<input type="reset" class="btn btn-danger" name="reset" value="Reset" >
+		<a href="Home.php"> กลับหน้าแรก </a>
+		</div>
+	</div>
+	</li>
 </form>
 
 <?php  
