@@ -19,3 +19,7 @@ catch(PDOException $e)
 
 $conn = null;
 ?> 
+<script>
+alert("ลงทะเบียนเสร็จสิ้น");
+window.location = 'http://127.0.0.1/Net-App/Home.php';
+</script>
