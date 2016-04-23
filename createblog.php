@@ -133,12 +133,12 @@ body,td,th {
 			    <input type="reset" name="reset" value="Reset" >
         </form>
 
-        <?php 
+        <?php
           if(!empty($_POST['reviewname']) and !empty($_POST['detail']) and !empty($_POST['image']) and !empty($_POST['rate']) and !empty($_POST['owner']) and !empty($_POST['datetime'])) {
             /*
             echo "reviewname =".$_POST['reviewname']."<br>detail = ".$_POST['detail']."<br>rate".$_POST['rate']."<br>owner=".$_POST['owner']."<br>date time".$_POST['datetime'];*/
-            $conndb = new PDO('mysql:host=localhost;dbname=moviesreview;charset=utf8','root','');
-
+            
+			$conndb = new PDO('mysql:host=localhost;dbname=moviesreview;charset=utf8','root','');
             $sql = "INSERT INTO review(`reviewname`, `datetime`, `detail`, `image`, `rate`, `owner`) VALUES (:reviewname,:datetime,:detail,:image,:rate,:owner)";
                 
             $sth = $conndb->prepare($sql);
