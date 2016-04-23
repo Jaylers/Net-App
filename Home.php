@@ -80,7 +80,7 @@ body,td,th {
         <hr size="10"> 
         <?php  
         $conndb = new PDO('mysql:host=localhost;dbname=moviesreview;charset=utf8','root','');
-		$sth = $conndb->prepare("SELECT * FROM review");
+		$sth = $conndb->prepare("SELECT * FROM review Order By reviewid desc");
 		$sth->execute();
 		if ($sth !== false) {
 		    while($row = $sth->fetch()) {

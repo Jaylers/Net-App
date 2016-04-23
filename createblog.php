@@ -35,6 +35,41 @@ body,td,th {
 </style>
 <body>
 
+<script language="javascript">
+  function fncSubmit()//ฟังชั่นตรวจว่ากรอกข้อมูลครบไหม
+  {    
+
+    if(document.form1.reviewname.value == "")
+    {
+      alert('Please input reviewname');
+      document.form1.reviewname.focus();
+      return false;
+    } 
+    if(document.form1.detail.value == "")
+    {
+      alert('Please input detail');
+      document.form1.detail.focus();       
+      return false;
+    }  
+    if(document.form1.image.value == "")
+    {
+      alert('Please input image');
+      document.form1.image.focus();       
+      return false;
+    } 
+    if(document.form1.rate.value == "")
+    {
+      alert('Please input rate');
+      document.form1.rate.focus();       
+      return false;
+    }  
+    
+
+    document.form1.submit();
+  }
+
+</script>
+
 <div class="container">
 	<div class="row">
 		<!--ส่วนบาร์-->
@@ -54,7 +89,7 @@ body,td,th {
 				if(!empty($_SESSION["ID"])){
 					$username = $_SESSION["Nickname"];
 					
-					echo "<li style='float: right;'> <a> <form  name='form1' id='form1' method='post' action='Home.php' >
+					echo "<li style='float: right;'> <a> <form  name='form2' id='form2' method='post' action='Home.php' >
 							<input type='hidden' name='logout' value='logout' >
 							<input type='submit' name='logout' value='Logout' >
 						</form></a></li>";
@@ -71,12 +106,13 @@ body,td,th {
         <hr size="10"> 
         <strong><font size='30'>Create Blog </font></strong>
         <br><br>
-        <form name="form1" id="form1" method="post" action="createblog.php" >
+        <form name="form1" id="form1" method="post" action="createblog.php" onSubmit="JavaScript:return fncSubmit();" >
         	<p>Movie Name <input type="varchar" id="reviewname" name="reviewname" size="100"></input></p>
         	<p>Detail</p>
         	<textarea name="detail" id="detail" rows="10" cols="100"></textarea>
         	<p>URL Image <input type="varchar" id="image" name="image" size="100"></input></p>
         	<p>Rate <select id="rate" name="rate">
+            <option value="">เลือกคะแนน</option>
         		<option value="0">0</option>
         		<option value="1">1</option>
         		<option value="2">2</option>
