@@ -1,4 +1,5 @@
 <?php 
+    $username = "unknown";
 	if(!empty($_GET['rid'])){
 		$rid = $_GET['rid'];
 	}
@@ -7,20 +8,16 @@
 	if(!empty($_SESSION["ID"])){
 		$username=$_SESSION["Nickname"];
 	}
-	else {
-		$username="unknow";
-	}
-?>
-<?php
-    if(isset($_POST['detail']) and isset($_POST['agree']) and isset($_POST['rid']) and isset($_POST['username']))
+
+    if( isset($_POST['detail']) and isset($_POST['agree']) and isset($_POST['rid']))
     {
     	if($_POST['agree']!=1){
 	    	$agree= 0;
 	    }else $agree= 1;
 	    $detail= $_POST['detail'];
-	    $owner = $_POST['username'];
+	    $owner = $username;
 	    $rid= $_POST['rid'];
-       	$commentof = "unknow";
+       	$commentof = "unknown";
         $conndb = new PDO('mysql:host=localhost;dbname=moviesreview;charset=utf8','root','');
 		$sth = $conndb->prepare("SELECT reviewname FROM review WHERE reviewid = '$rid' ");
 		$sth->execute();
@@ -54,8 +51,8 @@
         }
         mysqli_set_charset($conn, "utf8");
         $time = date('Y-m-d H:i:s');
-        $sql = "INSERT INTO comment(commentid, detail, agree, datetime, owner, commentof) VALUES ('$maxcomm','$detail','$agree','$time','$owner','$commentof')";
-
+        $sql = "INSERT INTO comment(commentid, detail, agree, datetime, owner, commentof) 
+        		VALUES ('$maxcomm','$detail','$agree','$time','$owner','$commentof')";
         $conn->query($sql);
         $conn->close();
     }
@@ -91,7 +88,7 @@ body,td,th {
 }
 </style>
 
-<title>Lab08-1-560510630</title>
+<title>Review Blog</title>
 </head>
 <style>
 .row-eq-height {
@@ -114,7 +111,7 @@ body,td,th {
             	<a href="#"> Review </a>
             </li>
             <?php
-            if( $username != "unknow")
+            if( $username != "unknown")
             { ?>
               <li style='float: right;'>
               	<form align='right' name='form1' id='form1' method='post' action='Home.php' >
@@ -124,13 +121,13 @@ body,td,th {
               </li>
               <?php } ?>
               <?php
-            if( $username == "unknow")
+            if( $username == "unknown")
               { ?>
           		<li style='float: right;'>
              		<a href="loginpage.php"> Sign in </a>
              	</li>
           		<li style='float: right;'>
-             		<a href="#"> Register </a>
+             		<a href="regis.php"> Register </a>
             	</li>
               <?php } ?>
           </ul>
@@ -144,7 +141,7 @@ body,td,th {
   	<li>
 
     	<?php
-    	$rname = "unknow";
+    	$rname = "unknown";
 		$conndb = new PDO('mysql:host=localhost;dbname=moviesreview;charset=utf8','root','');
 		$sth = $conndb->prepare("SELECT nickname FROM member WHERE memberid in (SELECT owner FROM review WHERE reviewid = '$rid') ");
 		$sth->execute();
@@ -216,7 +213,7 @@ body,td,th {
 		$conndb = null;
         ?>
 
-<?php if( $username != "unknow") { ?>
+<?php if( $username != "unknown") { ?>
 
 <ol class="breadcrumb"><br>
 <li>
@@ -228,8 +225,8 @@ body,td,th {
   			<input type='radio' name='agree' id='agree1' value='1' checked/> Agree 
   			<input type='radio' name='agree' id='agree2' value='0'> Disagree
 
-			<input type='hidden' name='rid' value='$rid' />
-			<input type='hidden' name='username' value='$username' /><br/><br/>
+			<input type='hidden' name='rid' value='<?php echo $rid ?>' />
+			<br/><br/>
 		</div>
 		<div class="controls">
         	<input type="submit" class="btn btn-success" id="submitbottom" value="Comment">
