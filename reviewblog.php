@@ -130,7 +130,7 @@ body,td,th {
              		<a href="loginpage.php"> Sign in </a>
              	</li>
           		<li style='float: right;'>
-             		<a href="regis.php"> Register </a>
+             		<a href="#"> Register </a>
             	</li>
               <?php } ?>
           </ul>
